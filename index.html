@@ -1,0 +1,1520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Victoria Rose | GIS & Spatial Storytelling</title>
+
+  <meta name="description"
+        content="Victoria Rose's portfolio of GIS, cartography,
+        geographic data visualization, and spatial storytelling.">
+
+  <style>
+
+    /* =========================================
+       1. COLORS & FONTS
+       Change these to customize your theme!
+    ========================================= */
+
+    :root {
+      --navy: #163E64;
+      --dark-navy: #102D49;
+      --blue: #366A93;
+      --light-blue: #DFE9F2;
+
+      --background: #F6F8FA;
+      --white: #FFFFFF;
+      --border: #D0D6DE;
+
+      --text: #253544;
+      --muted: #596C7C;
+
+      --heading-font: Georgia, "Times New Roman", serif;
+      --body-font: Arial, Helvetica, sans-serif;
+    }
+
+    /* =========================================
+       2. GENERAL STYLING
+    ========================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--body-font);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: auto;
+      padding: 0 28px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--heading-font);
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin: 12px 0 24px;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 0.73rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "— ";
+    }
+
+    /* =========================================
+       3. NAVIGATION
+    ========================================= */
+
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-content {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-contact {
+      border: 1px solid var(--navy);
+      border-radius: 30px;
+      padding: 8px 18px;
+    }
+
+    /* =========================================
+       4. BUTTONS
+    ========================================= */
+
+    .button {
+      display: inline-block;
+      border-radius: 30px;
+      padding: 12px 22px;
+      font-size: 0.88rem;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--navy);
+    }
+
+    .button-primary:hover {
+      background: var(--blue);
+    }
+
+    .button-outline {
+      border: 1px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .button-outline:hover {
+      background: var(--light-blue);
+    }
+
+    /* =========================================
+       5. HERO / INTRODUCTION
+    ========================================= */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding-top: 85px;
+      padding-bottom: 90px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5.6vw, 5.4rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      color: var(--navy);
+      margin: 22px 0 26px;
+    }
+
+    .hero h1 em {
+      color: var(--blue);
+      font-weight: normal;
+    }
+
+    .hero-description {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-note {
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* =========================================
+       6. HERO MAP ILLUSTRATION
+       Replace with your own map image later!
+    ========================================= */
+
+    .hero-map {
+      height: 420px;
+      background: var(--light-blue);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(22,62,100,0.08);
+    }
+
+    .hero-map svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .map-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--white);
+      color: var(--navy);
+      border-radius: 5px;
+      padding: 9px 13px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .map-legend {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      background: var(--white);
+      padding: 14px 18px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      font-size: 0.75rem;
+    }
+
+    .map-legend strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+    }
+
+    /* =========================================
+       7. SECTION HEADINGS
+    ========================================= */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 36px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 380px;
+      font-size: 0.95rem;
+    }
+
+    /* =========================================
+       8. PROJECT GALLERY
+    ========================================= */
+
+    #projects {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(22,62,100,0.10);
+    }
+
+    .project-image {
+      height: 200px;
+      background: var(--light-blue);
+      overflow: hidden;
+    }
+
+    .project-image svg,
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-category {
+      font-size: 0.69rem;
+      letter-spacing: 1.2px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      line-height: 1.2;
+      margin: 0 0 14px;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    }
+
+    .project-link a {
+    display: inline-block;
+    }
+
+    .project-link a:first-child {
+    color: var(--blue);
+    }
+
+    .project-link a:hover {
+      text-decoration: underline;
+    }
+
+    .project-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 25px;
+    }
+
+    /* =========================================
+       9. ABOUT ME
+    ========================================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .about-quote {
+      font-family: var(--heading-font);
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.55;
+      color: var(--navy);
+      border-left: 3px solid var(--blue);
+      padding-left: 22px;
+      margin-top: 30px;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-row strong {
+      color: var(--navy);
+      text-transform: uppercase;
+      font-size: 0.73rem;
+      letter-spacing: 1px;
+    }
+
+    .detail-row p {
+      font-size: 0.91rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* =========================================
+       10. SKILLS SECTION
+    ========================================= */
+
+    #skills {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    #skills .eyebrow {
+      color: #B7D2E7;
+    }
+
+    #skills h2 {
+      color: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      padding: 26px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.4rem;
+      margin: 0 0 12px;
+    }
+
+    .skill-card p {
+      color: #D6E3ED;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* =========================================
+       11. CONTACT
+    ========================================= */
+
+    #contact {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    #contact h2 {
+      font-size: 3.4rem;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    #contact p {
+      max-width: 550px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+    }
+
+    /* =========================================
+       12. FOOTER
+    ========================================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================================
+       13. MOBILE RESPONSIVENESS
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+      .hero {
+        gap: 35px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .nav-content {
+        flex-wrap: wrap;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+        padding-bottom: 65px;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+
+      .hero-map {
+        height: 300px;
+      }
+
+      .project-grid,
+      .about-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      #contact h2 {
+        font-size: 2.5rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    
+    /* MONTEPULCIANO NDVI PROJECT */
+
+    .project-image.ndvi-preview {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: #07190d;
+    }
+
+    .project-image.ndvi-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    }
+
+    /* Location label at top left */
+    .ndvi-location {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    background: rgba(22, 62, 100, 0.90);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    pointer-events: none;
+    }
+
+    /* Changing month label at bottom left */
+    .ndvi-month {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+
+    background: rgba(22, 62, 100, 0.90);
+    color: white;
+    padding: 7px 12px;
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    pointer-events: none;
+    }
+
+    /* Small data limitation note */
+    .ndvi-note {
+    font-size: 12px;
+    color: #687987;
+    font-style: italic;
+    margin-top: 15px;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================
+       NAVIGATION
+  ====================================== -->
+
+  <header class="navbar">
+    <div class="container nav-content">
+
+      <a class="logo" href="#home">
+        Victoria <span>Rose.</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a class="nav-contact" href="#contact">Connect ↗</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =====================================
+         HERO SECTION
+    ====================================== -->
+
+    <div id="home" class="container hero">
+
+      <div class="hero-text">
+
+        <div class="eyebrow">
+          Geography · Cartography · Visual Storytelling
+        </div>
+
+        <h1>
+          Mapping places.<br>
+          <em>Finding stories.</em>
+        </h1>
+
+        <p class="hero-description">
+          Hi, I'm Victoria — a Geography: Data Science
+          student exploring how maps, spatial analysis,
+          and visual storytelling can deepen our
+          understanding of places and the people
+          who experience them.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#projects" class="button button-primary">
+            Explore my work ↗
+          </a>
+
+          <a href="#about" class="button button-outline">
+            My background ↓
+          </a>
+
+        </div>
+
+        <div class="hero-note">
+          University of Washington · GIS + Creative Storytelling
+        </div>
+
+      </div>
+
+
+      <!-- ILLUSTRATIVE MAP -->
+      <div class="hero-map">
+
+        <svg viewBox="0 0 500 420"
+             preserveAspectRatio="xMidYMid slice"
+             role="img"
+             aria-label="Illustrative map of paths and places">
+
+          <rect width="500" height="420" fill="#DFE9F2"/>
+
+          <!-- Contour lines -->
+          <g fill="none" stroke="#9CB5C9" stroke-width="1.5">
+            <path d="M-30 25 Q90 -20 190 30 T520 12"/>
+            <path d="M-30 55 Q90 10 190 60 T520 42"/>
+            <path d="M-30 85 Q90 40 190 90 T520 72"/>
+            <path d="M-30 115 Q90 70 190 120 T520 102"/>
+            <path d="M-30 145 Q90 100 190 150 T520 132"/>
+            <path d="M-30 175 Q90 130 190 180 T520 162"/>
+            <path d="M-30 205 Q90 160 190 210 T520 192"/>
+            <path d="M-30 235 Q90 190 190 240 T520 222"/>
+            <path d="M-30 265 Q90 220 190 270 T520 252"/>
+            <path d="M-30 295 Q90 250 190 300 T520 282"/>
+            <path d="M-30 325 Q90 280 190 330 T520 312"/>
+            <path d="M-30 355 Q90 310 190 360 T520 342"/>
+            <path d="M-30 385 Q90 340 190 390 T520 372"/>
+          </g>
+
+          <!-- River -->
+          <path
+            d="M-30 310 C85 230 105 390 220 320
+               S355 220 530 295"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-width="43"
+          />
+
+          <path
+            d="M-30 310 C85 230 105 390 220 320
+               S355 220 530 295"
+            fill="none"
+            stroke="#86B0CE"
+            stroke-width="27"
+          />
+
+          <!-- Narrative path -->
+          <path
+            d="M45 85 L140 145 L255 105
+               L355 188 L455 150"
+            fill="none"
+            stroke="#366A93"
+            stroke-width="3"
+            stroke-dasharray="7 8"
+          />
+
+          <!-- Locations -->
+          <g fill="#163E64"
+             stroke="#FFFFFF"
+             stroke-width="5">
+
+            <circle cx="140" cy="145" r="10"/>
+            <circle cx="255" cy="105" r="10"/>
+            <circle cx="355" cy="188" r="10"/>
+
+          </g>
+
+          <g font-family="Arial"
+             font-size="13"
+             font-weight="bold"
+             fill="#163E64">
+
+            <text x="155" y="137">PLACE</text>
+            <text x="270" y="96">MEMORY</text>
+            <text x="370" y="180">STORY</text>
+
+          </g>
+
+        </svg>
+
+        <div class="map-label">
+          A Geography of Stories
+        </div>
+
+        <div class="map-legend">
+          <strong>MAP KEY</strong>
+          ● Human experience<br>
+          ─ Spatial connections
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================
+         PROJECTS
+    ====================================== -->
+
+    <section id="projects">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+            <div class="eyebrow">Selected Work</div>
+            <h2>Projects & Explorations</h2>
+          </div>
+
+          <p class="section-description">
+            Academic mapping projects exploring spatial
+            analysis, environmental geography, interactive
+            cartography, and narrative design.
+          </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+          <!-- PROJECT 1 -->
+          <article class="project-card">
+
+            <div class="project-image">
+
+              <!-- Illustrated placeholder -->
+              <svg viewBox="0 0 500 280"
+                   preserveAspectRatio="xMidYMid slice"
+                   role="img"
+                   aria-label="Illustrative historical map">
+
+                <rect width="500" height="280" fill="#E1E7ED"/>
+
+                <g fill="none"
+                   stroke="#A4B8CA"
+                   stroke-width="2">
+
+                  <path d="M-20 20 C150 90 260 -15 520 40"/>
+                  <path d="M-20 70 C150 140 260 35 520 90"/>
+                  <path d="M-20 120 C150 190 260 85 520 140"/>
+                  <path d="M-20 170 C150 240 260 135 520 190"/>
+                  <path d="M-20 220 C150 290 260 185 520 240"/>
+
+                </g>
+
+                <path
+                  d="M50 240 L120 170 L210 195
+                     L290 90 L400 115 L470 45"
+                  stroke="#366A93"
+                  stroke-width="4"
+                  stroke-dasharray="8 8"
+                  fill="none"
+                />
+
+                <g fill="#163E64"
+                   stroke="#FFFFFF"
+                   stroke-width="5">
+
+                  <circle cx="120" cy="170" r="11"/>
+                  <circle cx="290" cy="90" r="11"/>
+                  <circle cx="400" cy="115" r="11"/>
+
+                </g>
+
+              </svg>
+
+            </div>
+
+            <div class="project-content">
+
+              <div class="project-category">
+                Narrative Cartography · Coursework
+              </div>
+
+              <h3>Genealogical Geography StoryMap</h3>
+
+              <p>
+                Exploring personal and historical narratives
+                through place, with an emphasis on the
+                relationships between geography, memory,
+                and storytelling.
+              </p>
+
+              <div class="tags">
+                <span class="tag">StoryMaps</span>
+                <span class="tag">Spatial Narrative</span>
+              </div>
+
+              <div class="project-link">
+                Project link coming soon
+              </div>
+
+            </div>
+
+          </article>
+
+
+        
+        <!-- Project: Montepulciano NDVI -->
+        <article class="project-card">
+
+        <div class="project-image ndvi-preview">
+
+            <img
+            id="ndvi-frame"
+            src="pictures/ndvi-frames/ndvi-01.png"
+            alt="NDVI map of Montepulciano, January 2025"
+            >
+
+            <div class="ndvi-location">
+            Montepulciano, Italy
+            </div>
+
+            <div class="ndvi-month" id="ndvi-month">
+            January 2025
+            </div>
+
+        </div>
+
+        <div class="project-content">
+
+            <div class="project-category">
+            Remote Sensing · Temporal Analysis
+            </div>
+
+            <h3>Seasonal Vegetation Dynamics</h3>
+
+            <p>
+            Exploring seasonal vegetation changes in
+            Montepulciano, Italy, using Sentinel-2
+            satellite imagery and the Normalized
+            Difference Vegetation Index (NDVI).
+            Monthly composites reveal changes in
+            vegetation throughout 2025.
+            </p>
+
+            <div class="tags">
+            <span class="tag">Google Earth Engine</span>
+            <span class="tag">Sentinel-2</span>
+            <span class="tag">NDVI</span>
+            <span class="tag">Remote Sensing</span>
+            </div>
+
+            <p class="ndvi-note">
+            February excluded due to insufficient
+            imagery meeting the cloud-cover filter.
+            </p>
+
+        </div>
+
+        </article>
+
+
+
+
+        <!-- PROJECT 2 -->
+        <article class="project-card">
+
+        <!-- PROJECT IMAGE -->
+        <div class="project-image">
+            <img
+            src="pictures/Seattle Slopes.png"
+            alt="Map of Seattle terrain and historical landslide locations"
+            >
+        </div>
+
+        <!-- PROJECT TEXT AND LINKS -->
+        <div class="project-content">
+
+            <div class="project-category">
+            Environmental GIS · Web Cartography
+            </div>
+
+            <h3>Seattle Slopes</h3>
+
+            <p>
+            Interactive visualization of Seattle's
+            terrain and historical landslide activity,
+            combining elevation-derived slope data
+            with geographic records.
+            </p>
+
+            <div class="tags">
+            <span class="tag">QGIS</span>
+            <span class="tag">Raster Analysis</span>
+            <span class="tag">Mapbox</span>
+            </div>
+
+            <div class="project-link">
+
+            <!-- LIVE MAP -->
+            <a href="https://vvvrose3.github.io/geog458-labs/lab3/victoriarose_lab3-2.html"
+                target="_blank"
+                rel="noopener noreferrer">
+                View Interactive Map ↗
+            </a>
+
+            <!-- GITHUB -->
+            <a href="https://github.com/vvvrose3/geog458-labs/tree/main/lab3"
+                target="_blank"
+                rel="noopener noreferrer">
+                View GitHub Files ↗
+            </a>
+
+            </div>
+
+        </div>
+
+        </article>
+
+
+
+          <!-- PROJECT 3 -->
+          <article class="project-card">
+
+            <div class="project-image">
+
+              <svg viewBox="0 0 500 280"
+                   preserveAspectRatio="xMidYMid slice"
+                   role="img"
+                   aria-label="Illustrative spatial heatmap">
+
+                <rect width="500" height="280" fill="#E5EBF2"/>
+
+                <!-- Grid -->
+                <g stroke="#FFFFFF"
+                   stroke-width="12">
+
+                  <path d="M0 70 H500"/>
+                  <path d="M0 140 H500"/>
+                  <path d="M0 210 H500"/>
+
+                  <path d="M65 0 V280"/>
+                  <path d="M150 0 V280"/>
+                  <path d="M235 0 V280"/>
+                  <path d="M320 0 V280"/>
+                  <path d="M405 0 V280"/>
+
+                </g>
+
+                <!-- Heatmap -->
+                <g opacity="0.85">
+
+                  <circle cx="145" cy="122" r="75"
+                          fill="#AFC8DD"/>
+
+                  <circle cx="171" cy="135" r="49"
+                          fill="#6497BC"/>
+
+                  <circle cx="176" cy="138" r="25"
+                          fill="#285E8A"/>
+
+                  <circle cx="357" cy="170" r="74"
+                          fill="#C7D6E3"/>
+
+                  <circle cx="363" cy="173" r="49"
+                          fill="#86AEC9"/>
+
+                  <circle cx="368" cy="177" r="22"
+                          fill="#366A93"/>
+
+                </g>
+
+                <g fill="#163E64"
+                   stroke="#FFFFFF"
+                   stroke-width="4">
+
+                  <circle cx="175" cy="135" r="7"/>
+                  <circle cx="364" cy="172" r="7"/>
+                  <circle cx="305" cy="73" r="6"/>
+
+                </g>
+
+              </svg>
+
+              
+            </div>
+
+            <div class="project-content">
+
+              <div class="project-category">
+                Interactive Mapping · Coursework
+              </div>
+
+              <h3>Web Mapping & Heatmaps</h3>
+
+              <p>
+                Interactive visualization experiments
+                using Mapbox GL JS, including point-based
+                maps, heatmaps, and user-controlled
+                map layers.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mapbox GL JS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">GeoJSON</span>
+              </div>
+
+              <div class="project-link">
+                <a href="https://github.com/vvvrose3/geog458-labs/tree/main/lab4"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Explore project files ↗
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+
+
+        
+        <!-- PROJECT: ENVIRONMENTAL HEALTH -->
+        <article class="project-card">
+
+        <!-- PROJECT IMAGE -->
+        <div class="project-image">
+            <img
+            src="pictures/PM25 Low Birth Weight.png"
+            alt="QGIS map comparing PM2.5 concentrations, low birth weight indicators, and highway proximity in Washington State"
+            >
+        </div>
+
+        <!-- PROJECT CONTENT -->
+        <div class="project-content">
+
+            <div class="project-category">
+            Environmental Health · Spatial Analysis
+            </div>
+
+            <h3>
+            Air Quality, Birth Outcomes & Highway Proximity
+            </h3>
+
+            <p>
+            An exploratory GIS analysis investigating the spatial
+            relationships between PM2.5 concentrations, low birth
+            weight indicators, and Washington State's National
+            Highway System. Combined census tract data with highway
+            buffers and thematic mapping to visualize geographic
+            patterns and potential environmental health disparities.
+            </p>
+
+            <!-- SKILLS AND SOFTWARE -->
+            <div class="tags">
+            <span class="tag">QGIS</span>
+            <span class="tag">Buffer Analysis</span>
+            <span class="tag">Spatial Intersection</span>
+            <span class="tag">Dot Density</span>
+            <span class="tag">Public Health</span>
+            </div>
+
+            <!-- VIEW FULL-SIZE MAP -->
+            <div class="project-link">
+            <a href="pictures/PM25 Low Birth Weight.png"
+                target="_blank"
+                rel="noopener noreferrer">
+                View Full Map ↗
+            </a>
+            </div>
+
+        </div>
+
+        </article>
+
+
+        </div>
+
+        <p class="project-note">
+          Map graphics are illustrative placeholders.
+          I'll replace them with screenshots from my
+          completed projects as this portfolio develops.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ABOUT
+    ====================================== -->
+
+    <section id="about">
+
+      <div class="container about-grid">
+
+        <div class="about-text">
+
+          <div class="eyebrow">About Me</div>
+
+          <h2>From motion graphics to maps.</h2>
+
+          <p>
+            My path into geography began with visual
+            storytelling. I earned an associate's degree
+            in Video and Motion Graphics, then followed
+            my interest in how images and narratives
+            communicate information into Geography:
+            Data Science.
+          </p>
+
+          <p>
+            Today, I'm particularly interested in how
+            geographic analysis can be combined with
+            personal experience, historical context,
+            and community perspectives to tell more
+            meaningful stories about place.
+          </p>
+
+          <div class="about-quote">
+            A map can show where something happens.
+            A story can help explain why it matters.
+          </div>
+
+        </div>
+
+
+        <div class="about-details">
+
+          <div class="detail-row">
+
+            <strong>Education</strong>
+
+            <p>
+              University of Washington<br>
+              Geography: Data Science (B.A. program)
+            </p>
+
+          </div>
+
+          <div class="detail-row">
+
+            <strong>Minor</strong>
+
+            <p>
+              Textual Studies & Digital Humanities
+            </p>
+
+          </div>
+
+          <div class="detail-row">
+
+            <strong>Earlier Study</strong>
+
+            <p>
+              Associate's Degree in Video and Motion Graphics
+            </p>
+
+          </div>
+
+          <div class="detail-row">
+
+            <strong>Interests</strong>
+
+            <p>
+              Spatial storytelling, participatory GIS,
+              historical maps, environmental data,
+              and experiences of place.
+            </p>
+
+          </div>
+
+          <div class="detail-row">
+
+            <strong>Approach</strong>
+
+            <p>
+              Combining geographic analysis with
+              creative, human-centered ways of
+              communicating data.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         SKILLS
+    ====================================== -->
+
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="eyebrow">Tools & Approaches</div>
+
+        <h2>
+          Technical curiosity.<br>
+          Creative perspective.
+        </h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-card">
+
+            <h3>GIS & Analysis</h3>
+
+            <p>
+              QGIS, ArcGIS, spatial analysis,
+              remote sensing, geographic data
+              processing, and Python.
+            </p>
+
+          </div>
+
+          <div class="skill-card">
+
+            <h3>Interactive Maps</h3>
+
+            <p>
+              Mapbox GL JS, web cartography,
+              thematic mapping, heatmaps, GeoJSON,
+              and HTML/CSS/JavaScript.
+            </p>
+
+          </div>
+
+          <div class="skill-card">
+
+            <h3>Visual Storytelling</h3>
+
+            <p>
+              Motion graphics, Adobe creative
+              tools, narrative structure,
+              multimedia, and cartographic design.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CONTACT
+    ====================================== -->
+
+    <section id="contact">
+
+      <div class="container">
+
+        <div class="eyebrow">Let's Connect</div>
+
+        <h2>
+          Interested in mapping<br>
+          something meaningful?
+        </h2>
+
+        <p>
+          I'm interested in research, GIS, and spatial
+          storytelling collaborations that connect
+          geographic information with the experiences
+          of people and places.
+        </p>
+
+        <a class="button button-primary"
+           href="https://github.com/vvvrose3"
+           target="_blank"
+           rel="noopener noreferrer">
+          Find me on GitHub ↗
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
+  <footer>
+
+    <div class="container footer-content">
+
+      <span>
+        © 2026 Victoria Rose · Made with HTML & CSS
+      </span>
+
+      <span>
+        Geography · Data · Storytelling
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+    <script>
+    // Months represented in the animation.
+    // February is missing.
+    const ndviMonths = [
+        "January",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    const ndviImage = document.getElementById("ndvi-frame");
+    const ndviLabel = document.getElementById("ndvi-month");
+
+    // Paths to the 11 extracted PNG images.
+    const ndviFrames = ndviMonths.map((month, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        return `pictures/ndvi-frames/ndvi-${number}.png`;
+    });
+
+    // Preload images for smooth playback.
+    Promise.all(
+        ndviFrames.map(src => {
+        const image = new Image();
+        image.src = src;
+        return image.decode();
+        })
+    ).then(() => {
+
+        let currentFrame = 0;
+
+        function updateNDVI() {
+        ndviImage.src = ndviFrames[currentFrame];
+
+        ndviLabel.textContent =
+            ndviMonths[currentFrame] + " 2025";
+
+        ndviImage.alt =
+            "NDVI map of Montepulciano, " +
+            ndviMonths[currentFrame] + " 2025";
+        }
+
+        updateNDVI();
+
+        // Change the image and month every second.
+        if (!window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+        ).matches) {
+        setInterval(() => {
+            currentFrame =
+            (currentFrame + 1) % ndviFrames.length;
+
+            updateNDVI();
+        }, 1000);
+        }
+
+    }).catch(error => {
+        console.error("NDVI images failed to load:", error);
+    });
+    </script>
+
+
+
+
+</body>
+</html>
