@@ -306,6 +306,7 @@
       background: var(--white);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      padding-bottom: 55px;
     }
 
     .project-grid {
@@ -528,6 +529,19 @@
       color: var(--muted);
     }
 
+
+    
+    /* Contact buttons */
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+
+
     /* =========================================
        12. FOOTER
     ========================================= */
@@ -673,6 +687,299 @@
 
 
 
+    /* =========================================
+      14. NARRATIVE & CREATIVE GEOGRAPHIES
+    ========================================= */
+
+    #stories {
+      background: #EAF1F7;
+      border-top: 1px solid #CBD9E5;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 76px;
+      padding-top: 70px;
+    }
+
+    /* Two main narrative project cards */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(22, 62, 100, 0.10);
+    }
+
+    /* Visualization previews */
+    .story-preview {
+      height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      overflow: hidden;
+
+      background: #EDF2F6;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .story-preview--treemap {
+      background: #EEF5ED;
+    }
+
+    .story-preview--dendrogram {
+      background: #F6F5F8;
+    }
+
+    .story-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Text content */
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 26px;
+    }
+
+    .story-content h3 {
+      color: var(--navy);
+      font-size: 1.6rem;
+      line-height: 1.2;
+      margin: 0 0 15px;
+    }
+
+    .story-content p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Creative question displayed in each card */
+    .story-question {
+      font-family: var(--heading-font);
+      font-style: italic;
+      color: var(--navy) !important;
+      font-size: 1.08rem !important;
+    }
+
+    .story-content .tags {
+      margin-top: auto;
+    }
+
+    .story-footnote {
+      margin-top: 18px;
+      margin-bottom: 0;
+      font-size: 0.78rem !important;
+    }
+
+    /* Smaller creative experiment */
+    .sketchbook {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+
+      margin-top: 34px;
+      padding: 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--white);
+    }
+
+    .sketchbook-image {
+      display: block;
+      border-radius: 9px;
+      overflow: hidden;
+      background: var(--light-blue);
+    }
+
+    .sketchbook-image img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .sketchbook h3 {
+      font-size: 1.45rem;
+      color: var(--navy);
+      margin: 6px 0 12px;
+    }
+
+    .sketchbook p {
+      color: var(--muted);
+      font-size: 0.91rem;
+      margin-bottom: 15px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 700px) {
+      .story-grid,
+      .sketchbook {
+        grid-template-columns: 1fr;
+      }
+
+      .story-preview {
+        height: 240px;
+      }
+
+      .sketchbook-image img {
+        height: 240px;
+      }
+    }
+
+
+    
+      /* =========================================
+        INTERACTIVE DATA POSTCARD
+      ========================================= */
+
+      /* Give the image enough room to be appreciated */
+      .sketchbook {
+        grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+      }
+
+      .sketchbook-media {
+        min-width: 0;
+      }
+
+      /* Display the actual postcard without letterboxing */
+      .sketchbook-media .sketchbook-image {
+        display: block;
+        overflow: hidden;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      /* Preserve the image's natural proportions */
+      .sketchbook-media .sketchbook-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+
+      /* Front / back buttons */
+      .diary-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .diary-toggle {
+        flex: 1;
+        min-width: 120px;
+        padding: 9px 10px;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        background: white;
+        color: var(--navy);
+
+        font-family: var(--body-font);
+        font-size: 12px;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .diary-toggle:hover {
+        background: var(--light-blue);
+      }
+
+      .diary-toggle.active {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: white;
+      }
+
+      .diary-toggle:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      .diary-hint {
+        margin: 9px 0 0;
+        color: var(--muted);
+        font-size: 12px !important;
+      }
+
+      .diary-hint-detail {
+        display: block;
+        margin-top: 4px;
+      }
+
+      /* Preserve the existing mobile layout */
+      @media (max-width: 700px) {
+        .sketchbook {
+          grid-template-columns: 1fr;
+        }
+      }
+
+
+
+      /* =========================================
+        ALIGN PROJECT CARD FOOTERS
+      ========================================= */
+
+      /* Reserve equal space for skill tags */
+      .project-card .tags {
+        margin-top: auto;
+        min-height: 130px;
+        padding-top: 0;
+        margin-bottom: 16px;
+        align-content: flex-start;
+      }
+
+      /* Reserve equal space for project links */
+      .project-card .project-link {
+        min-height: 64px;
+        align-content: flex-start;
+      }
+
+      /* Align the NDVI note with the link area */
+      .project-card .ndvi-note {
+        min-height: 64px;
+        margin: 0;
+      }
+
+      /* Avoid excessive empty space on mobile */
+      @media (max-width: 700px) {
+        .project-card .tags {
+          min-height: 0;
+          padding-top: 14px;
+        }
+
+        .project-card .project-link,
+        .project-card .ndvi-note {
+          min-height: 0;
+        }
+      }
+
+
+
+
   </style>
 </head>
 
@@ -689,12 +996,13 @@
         Victoria <span>Rose.</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a class="nav-contact" href="#contact">Connect ↗</a>
-      </nav>
+    <nav class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#stories">Stories</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a class="nav-contact" href="#contact">Connect ↗</a>
+    </nav>
 
     </div>
   </header>
@@ -865,81 +1173,78 @@
 
         <div class="project-grid">
 
-          <!-- PROJECT 1 -->
-          <article class="project-card">
 
-            <div class="project-image">
+                
+      <!-- PROJECT 1: GENEALOGICAL STORYMAP -->
+      <article class="project-card">
 
-              <!-- Illustrated placeholder -->
-              <svg viewBox="0 0 500 280"
-                   preserveAspectRatio="xMidYMid slice"
-                   role="img"
-                   aria-label="Illustrative historical map">
+        <!-- PROJECT THUMBNAIL -->
+        <a
+          class="project-image"
+          href="https://arcg.is/0L5T0z0"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open the Family Migration StoryMap"
+        >
 
-                <rect width="500" height="280" fill="#E1E7ED"/>
+          <img
+            src="pictures/new-ulm-storymap-preview.png"
+            alt="Historical map illustrating the migration and settlement of families in New Ulm, Minnesota"
+            loading="lazy"
+          >
 
-                <g fill="none"
-                   stroke="#A4B8CA"
-                   stroke-width="2">
+        </a>
 
-                  <path d="M-20 20 C150 90 260 -15 520 40"/>
-                  <path d="M-20 70 C150 140 260 35 520 90"/>
-                  <path d="M-20 120 C150 190 260 85 520 140"/>
-                  <path d="M-20 170 C150 240 260 135 520 190"/>
-                  <path d="M-20 220 C150 290 260 185 520 240"/>
+        <!-- PROJECT DESCRIPTION -->
+        <div class="project-content">
 
-                </g>
+          <div class="project-category">
+            Historical Geography · Narrative Cartography
+          </div>
 
-                <path
-                  d="M50 240 L120 170 L210 195
-                     L290 90 L400 115 L470 45"
-                  stroke="#366A93"
-                  stroke-width="4"
-                  stroke-dasharray="8 8"
-                  fill="none"
-                />
+          <h3>Tracing Family Migration to New Ulm</h3>
 
-                <g fill="#163E64"
-                   stroke="#FFFFFF"
-                   stroke-width="5">
+          <p>
+            An interactive historical StoryMap tracing the
+            interconnected migrations of the Preisinger,
+            Wagner, and Tauscheck families from German-speaking
+            Europe through Wisconsin to New Ulm, Minnesota.
+          </p>
 
-                  <circle cx="120" cy="170" r="11"/>
-                  <circle cx="290" cy="90" r="11"/>
-                  <circle cx="400" cy="115" r="11"/>
+          <p>
+            Combining immigration records, historical maps,
+            census data, and newspaper archives, the project
+            explores how individual family histories intersect
+            with broader patterns of migration, settlement,
+            and cultural identity.
+          </p>
 
-                </g>
+          <!-- TOOLS AND SKILLS -->
+          <div class="tags">
+            <span class="tag">ArcGIS StoryMaps</span>
+            <span class="tag">Archival Research</span>
+            <span class="tag">Historical Geography</span>
+            <span class="tag">Migration</span>
+            <span class="tag">Spatial Storytelling</span>
+          </div>
 
-              </svg>
+          <!-- LIVE PROJECT -->
+          <div class="project-link">
 
-            </div>
+            <a
+              href="https://arcg.is/0L5T0z0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Interactive StoryMap ↗
+            </a>
 
-            <div class="project-content">
+          </div>
 
-              <div class="project-category">
-                Narrative Cartography · Coursework
-              </div>
+        </div>
 
-              <h3>Genealogical Geography StoryMap</h3>
+      </article>
 
-              <p>
-                Exploring personal and historical narratives
-                through place, with an emphasis on the
-                relationships between geography, memory,
-                and storytelling.
-              </p>
-
-              <div class="tags">
-                <span class="tag">StoryMaps</span>
-                <span class="tag">Spatial Narrative</span>
-              </div>
-
-              <div class="project-link">
-                Project link coming soon
-              </div>
-
-            </div>
-
-          </article>
 
 
         
@@ -1214,15 +1519,327 @@
 
         </div>
 
-        <p class="project-note">
-          Map graphics are illustrative placeholders.
-          I'll replace them with screenshots from my
-          completed projects as this portfolio develops.
-        </p>
+      </div>
+
+    </section>
+
+      
+    <!-- =====================================
+        NARRATIVE & CREATIVE GEOGRAPHIES
+    ====================================== -->
+
+    <section id="stories">
+
+      <div class="container">
+
+        <!-- SECTION HEADING -->
+        <div class="section-heading">
+
+          <div>
+            <div class="eyebrow">Beyond the Basemap</div>
+            <h2>Narrative & Creative Geographies</h2>
+          </div>
+
+          <p class="section-description">
+            Exploring place through emotion, culture, memory,
+            and the stories people attach to their surroundings.
+          </p>
+
+        </div>
+
+
+        <!-- MAIN STORY PROJECTS -->
+        <div class="story-grid">
+
+
+          <!-- =====================================
+              STORY PROJECT 1: HAPPY PLACES
+          ====================================== -->
+
+          <article class="story-card">
+
+            <!-- Visualization -->
+            <a
+              class="story-preview story-preview--treemap"
+              href="pictures/happy-places-seattle.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the full Happy Places visualization"
+            >
+
+              <img
+                src="pictures/happy-places-seattle.png"
+                alt="Color-coded treemap of Seattle happy-place stories, grouped into emotional categories"
+                loading="lazy"
+              >
+
+            </a>
+
+
+            <!-- Project description -->
+            <div class="story-content">
+
+              <div class="project-category">
+                Affective Geography · Data Storytelling
+              </div>
+
+              <h3>Happy Places in Seattle</h3>
+
+              <p class="story-question">
+                What makes a place meaningful beyond
+                its physical function?
+              </p>
+
+              <p>
+                Using classmates' descriptions of meaningful
+                Seattle locations, I organized stories by
+                emotional experience rather than conventional
+                place types.
+              </p>
+
+              <p>
+                The resulting treemap explores how scenery,
+                relaxation, community, and everyday activities
+                shape people's relationships with the city.
+                Category colors reflect the themes of each
+                experience, while individual rectangles are
+                sized by story length.
+              </p>
+
+              <!-- Skills -->
+              <div class="tags">
+
+                <span class="tag">Qualitative Coding</span>
+                <span class="tag">Treemap</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">Emotional Geography</span>
+
+              </div>
+
+              <!-- Full-size visualization -->
+              <div class="project-link">
+
+                <a
+                  href="pictures/happy-places-seattle.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Full Visualization ↗
+                </a>
+
+              </div>
+
+              <p class="story-footnote">
+                Based on stories contributed by GEOG 450
+                classmates. Data preparation, interpretation,
+                and visualization by Victoria Rose.
+              </p>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =====================================
+              STORY PROJECT 2: CAPITOL HILL
+          ====================================== -->
+
+          <article class="story-card">
+
+            <!-- Visualization -->
+            <a
+              class="story-preview story-preview--dendrogram"
+              href="pictures/capitol-hill-restaurants.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the Capitol Hill restaurant dendrogram"
+            >
+
+              <img
+                src="pictures/capitol-hill-restaurants.png"
+                alt="Rainbow-colored radial dendrogram showing sampled Capitol Hill restaurant categories and locations"
+                loading="lazy"
+              >
+
+            </a>
+
+
+            <!-- Project description -->
+            <div class="story-content">
+
+              <div class="project-category">
+                Cultural Geography · Spatial Visualization
+              </div>
+
+              <h3>Restaurant Diversity in Capitol Hill</h3>
+
+              <p class="story-question">
+                How can a neighborhood's visual identity
+                inform the design of its data?
+              </p>
+
+              <p>
+                A collaborative exploration of restaurant
+                diversity in Seattle's Capitol Hill neighborhood.
+                We paired a radial dendrogram with a neighborhood
+                map to represent restaurant categories and
+                their geographic distribution.
+              </p>
+
+              <p>
+                A rainbow-inspired color palette connects
+                the visualization to Capitol Hill's cultural
+                history. My contributions included collecting
+                and preparing data, spatially filtering
+                restaurants using a neighborhood polygon,
+                and assembling the final infographic.
+              </p>
+
+              <!-- Skills -->
+              <div class="tags">
+
+                <span class="tag">Yelp API</span>
+                <span class="tag">GIS Filtering</span>
+                <span class="tag">Dendrogram</span>
+                <span class="tag">Observable</span>
+
+              </div>
+
+              <!-- Project links -->
+              <div class="project-link">
+
+                <a
+                  href="pictures/capitol-hill-restaurants.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Full Visualization ↗
+                </a>
+
+                <a
+                  href="https://observablehq.com/d/9697941a7470ca1a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Explore Observable Notebook ↗
+                </a>
+
+              </div>
+
+              <p class="story-footnote">
+                Collaborative coursework with Liam Chen.
+                Visualized categories reflect a sampled Yelp
+                dataset rather than every Capitol Hill restaurant.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+
+        <!-- =====================================
+            CREATIVE EXPERIMENT:
+            A WEEK OF BEVERAGES
+        ====================================== -->
+
+        <div class="sketchbook">
+
+         
+        <!-- Interactive data postcard -->
+        <div class="sketchbook-media">
+
+          <!-- Currently displayed side -->
+          <a
+            id="diary-image-link"
+            class="sketchbook-image"
+            href="pictures/week-of-beverages.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open the full-size data postcard"
+          >
+
+            <img
+              id="diary-image"
+              src="pictures/week-of-beverages.png"
+              alt="Front of hand-drawn data postcard showing five days of beverage consumption"
+              loading="lazy"
+            >
+
+          </a>
+
+          <!-- Postcard controls -->
+          <div class="diary-controls">
+
+            <button
+              type="button"
+              class="diary-toggle active"
+              data-side="front"
+              aria-pressed="true"
+            >
+              Front · Visualization
+            </button>
+
+            <button
+              type="button"
+              class="diary-toggle"
+              data-side="back"
+              aria-pressed="false"
+            >
+              Back · Key
+            </button>
+
+          </div>
+
+          <p class="diary-hint">
+            Flip between the visualization and its key.
+            
+            <span class="diary-hint-detail">
+              Click the image to view full size ↗
+            </span>
+          </p>
+
+        </div>
+
+
+
+          <!-- Description -->
+          <div>
+
+            <div class="project-category">
+              Visual Experiment · Personal Data Diary
+            </div>
+
+            <h3>A Week of Beverages</h3>
+
+            <p>
+              A hand-drawn experiment in representing ordinary
+              experiences as data. Each circular diagram encodes
+              what I drank, when, where, for how long, and how
+              it made me feel.
+            </p>
+
+            <p>
+              This project explores how personal routines can
+              become a visual narrative through color, symbols,
+              and unconventional forms of data representation.
+            </p>
+
+          </div>
+
+        </div>
+
 
       </div>
 
     </section>
+
+
+
+
 
 
     <!-- =====================================
@@ -1388,8 +2005,9 @@
     </section>
 
 
+
     <!-- =====================================
-         CONTACT
+        CONTACT
     ====================================== -->
 
     <section id="contact">
@@ -1404,22 +2022,36 @@
         </h2>
 
         <p>
-          I'm interested in research, GIS, and spatial
-          storytelling collaborations that connect
-          geographic information with the experiences
-          of people and places.
+          I'm interested in GIS, cartography, and spatial
+          storytelling opportunities that bring geographic
+          analysis and human experience together.
+          Feel free to reach out by email or connect with me
+          on LinkedIn to discuss opportunities and collaborations.
         </p>
 
-        <a class="button button-primary"
-           href="https://github.com/vvvrose3"
-           target="_blank"
-           rel="noopener noreferrer">
-          Find me on GitHub ↗
-        </a>
+        <!-- CONTACT BUTTONS -->
+        <div class="contact-buttons">
+
+          <!-- Email -->
+          <a class="button button-primary"
+            href="mailto:vrose3@uw.edu">
+            Email Me ↗
+          </a>
+
+          <!-- LinkedIn -->
+          <a class="button button-outline"
+            href="https://www.linkedin.com/in/victoriaroseditor/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Connect on LinkedIn ↗
+          </a>
+
+        </div>
 
       </div>
 
     </section>
+
 
   </main>
 
@@ -1513,6 +2145,55 @@
     });
     </script>
 
+
+    <script>
+      // =====================================
+      // INTERACTIVE DATA POSTCARD
+      // =====================================
+
+      const diaryImage = document.getElementById("diary-image");
+      const diaryLink = document.getElementById("diary-image-link");
+      const diaryButtons = document.querySelectorAll(".diary-toggle");
+
+      const diarySides = {
+        front: {
+          src: "pictures/week-of-beverages.jpg",
+          alt: "Front of a hand-drawn data postcard showing beverage consumption"
+        },
+
+        back: {
+          src: "pictures/week-of-beverages-back.jpg",
+          alt: "Back of the data postcard showing the legend, symbols, and explanation"
+        }
+      };
+
+      diaryButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          // Determine which side was selected
+          const side = button.dataset.side;
+          const selected = diarySides[side];
+
+          // Change the postcard image
+          diaryImage.src = selected.src;
+          diaryImage.alt = selected.alt;
+
+          // Update the full-size image link
+          diaryLink.href = selected.src;
+
+          // Highlight the selected button
+          diaryButtons.forEach(btn => {
+            const isActive = btn.dataset.side === side;
+
+            btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-pressed", isActive);
+          });
+
+        });
+
+      });
+    </script>
 
 
 
